@@ -96,8 +96,7 @@ After you get a copy of this repo in your own GitHub account,
 open a machine terminal in your `Repos` folder:
 
 ```shell
-# Replace username with YOUR GitHub username.
-git clone https://github.com/username/nlp-03-text-exploration
+git clone https://github.com/sydsailors/nlp-03-text-exploration
 cd nlp-03-text-exploration
 code .
 ```
@@ -106,7 +105,7 @@ code .
 
 ```shell
 uv self update
-uv python pin 3.14
+uv python pin 3.13
 uv sync --extra dev --extra docs --upgrade
 
 uvx pre-commit install
