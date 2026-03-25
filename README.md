@@ -142,6 +142,24 @@ git push -u origin main
 - Use the **UP ARROW** and **DOWN ARROW** in the terminal to scroll through past commands.
 - Use `CTRL+f` to find (and replace) text within a file.
 
+## Project Modifications
+
+Changes made to this project to make it my own include:
+
+**Phase 4: Make a Technical Modification**
+- Added stopwords to clean the text.
+- Updated the context window from 2 to 3.
+
+**Phase 5: Apply the Skills to a New Problem**
+- Created a new corpus with 9 documents that includes 3 categories: patient, hospital, and doctor.
+- Included stopwords to clean the text.
+- Used word cloud to give a quick sense of the most important or frequent bigrams.
+- Observations:
+  - Tokenization revealed what tokens dominate in each category:
+    - Patient: "patient", "treatment", "after", "care", "follows"
+    - Hospital: "hospital", "patients", "manages", "provides"
+    - Doctor: "doctor", "patient", "reviews", "prescribes", "results"
+
 ## Terminology
 
 In preparation for large language models (LLM) and related methods,
