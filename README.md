@@ -159,6 +159,11 @@ Changes made to this project to make it my own include:
     - Patient: "patient", "treatment", "after", "care", "follows"
     - Hospital: "hospital", "patients", "manages", "provides"
     - Doctor: "doctor", "patient", "reviews", "prescribes", "results"
+  - Co-occurrence shows relationships between roles and actions
+    - "patient" appears near "doctor", "hospital", "care", "mild", "treatment"
+    - "hospital" occurs near "admits", "emergency", "provides"
+    - "doctor" co-occurs with "examines", "prescribes", "medication", "reviews"
+  - Bigrams help to identify common patterns in sentences and frequent action-object relationships
 
 ## Terminology
 
@@ -174,96 +179,92 @@ For this analysis, each document is represented as a single line of text.
 ## Example Output
 
 ```text
-Corpus contains 22 documents.
+Corpus contains 9 documents.
 Tokenization complete.
 shape: (10, 2)
-┌──────────┬────────┐
-│ category ┆ token  │
-│ ---      ┆ ---    │
-│ str      ┆ str    │
-╞══════════╪════════╡
-│ dog      ┆ dog    │
-│ dog      ┆ barks  │
-│ dog      ┆ loudly │
-│ dog      ┆ the    │
-│ dog      ┆ puppy  │
-│ dog      ┆ runs   │
-│ dog      ┆ the    │
-│ dog      ┆ yard   │
-│ dog      ┆ canine │
-│ dog      ┆ wears  │
-└──────────┴────────┘
+┌──────────┬───────────┐
+│ category ┆ token     │
+│ ---      ┆ ---       │
+│ str      ┆ str       │
+╞══════════╪═══════════╡
+│ patient  ┆ patient   │
+│ patient  ┆ reports   │
+│ patient  ┆ mild      │
+│ patient  ┆ pain      │
+│ patient  ┆ patient   │
+│ patient  ┆ rests     │
+│ patient  ┆ after     │
+│ patient  ┆ treatment │
+│ patient  ┆ patient   │
+│ patient  ┆ follows   │
+└──────────┴───────────┘
 Top global tokens:
 shape: (10, 2)
-┌────────┬─────┐
-│ token  ┆ len │
-│ ---    ┆ --- │
-│ str    ┆ u32 │
-╞════════╪═════╡
-│ the    ┆ 27  │
-│ near   ┆ 4   │
-│ truck  ┆ 3   │
-│ cat    ┆ 3   │
-│ yard   ┆ 3   │
-│ garage ┆ 3   │
-│ dog    ┆ 3   │
-│ car    ┆ 3   │
-│ kitten ┆ 2   │
-│ window ┆ 2   │
-└────────┴─────┘
-Top tokens by category:
-shape: (12, 3)
-┌──────────┬─────────┬─────┐
-│ category ┆ token   ┆ len │
-│ ---      ┆ ---     ┆ --- │
-│ str      ┆ str     ┆ u32 │
-╞══════════╪═════════╪═════╡
-│ truck    ┆ the     ┆ 4   │
-│ truck    ┆ truck   ┆ 3   │
-│ truck    ┆ pickup  ┆ 1   │
-│ truck    ┆ carries ┆ 1   │
-│ truck    ┆ trailer ┆ 1   │
-│ …        ┆ …       ┆ …   │
-│ truck    ┆ heavy   ┆ 1   │
-│ truck    ┆ loads   ┆ 1   │
-│ truck    ┆ powers  ┆ 1   │
-│ truck    ┆ cargo   ┆ 1   │
-│ truck    ┆ hauls   ┆ 1   │
-└──────────┴─────────┴─────┘
-CAT top tokens: ['the', 'cat', 'kitten', 'window', 'near']
-TRUCK top tokens: ['the', 'truck', 'pickup', 'carries', 'trailer']
-CAR top tokens: ['the', 'garage', 'car', 'sedan', 'near']
-DOG top tokens: ['the', 'yard', 'dog', 'across', 'ran']
-
-Context for 'dog':
-['barks', 'loudly', 'holds', 'the', 'the', 'ran', 'across']
-
-Context for 'cat':
-['sleeps', 'quietly', 'the', 'has', 'whiskers', 'the', 'slept', 'near']
-
-Context for 'car':
-['drives', 'the', 'the', 'moves', 'down', 'the', 'stopped', 'near']
-
-Context for 'truck':
-['carries', 'cargo', 'powers', 'the', 'the', 'hauls', 'heavy']
-Top bigrams:
-shape: (10, 2)
 ┌────────────┬─────┐
-│ bigram     ┆ len │
+│ token      ┆ len │
 │ ---        ┆ --- │
 │ str        ┆ u32 │
 ╞════════════╪═════╡
-│ near the   ┆ 4   │
-│ the yard   ┆ 3   │
-│ the garage ┆ 3   │
-│ the cat    ┆ 2   │
-│ ran across ┆ 2   │
-│ the window ┆ 2   │
-│ the kitten ┆ 2   │
-│ the sedan  ┆ 2   │
-│ slept near ┆ 2   │
-│ across the ┆ 2   │
+│ patient    ┆ 5   │
+│ hospital   ┆ 3   │
+│ doctor     ┆ 3   │
+│ care       ┆ 2   │
+│ after      ┆ 1   │
+│ prescribes ┆ 1   │
+│ results    ┆ 1   │
+│ mild       ┆ 1   │
+│ examines   ┆ 1   │
+│ rests      ┆ 1   │
 └────────────┴─────┘
+Top tokens by category:
+shape: (12, 3)
+┌──────────┬───────────┬─────┐
+│ category ┆ token     ┆ len │
+│ ---      ┆ ---       ┆ --- │
+│ str      ┆ str       ┆ u32 │
+╞══════════╪═══════════╪═════╡
+│ patient  ┆ patient   ┆ 3   │
+│ patient  ┆ treatment ┆ 1   │
+│ patient  ┆ after     ┆ 1   │
+│ patient  ┆ care      ┆ 1   │
+│ patient  ┆ follows   ┆ 1   │
+│ …        ┆ …         ┆ …   │
+│ patient  ┆ reports   ┆ 1   │
+│ patient  ┆ mild      ┆ 1   │
+│ patient  ┆ pain      ┆ 1   │
+│ hospital ┆ hospital  ┆ 3   │
+│ hospital ┆ patients  ┆ 1   │
+└──────────┴───────────┴─────┘
+PATIENT top tokens: ['patient', 'treatment', 'after', 'care', 'follows']
+HOSPITAL top tokens: ['hospital', 'patients', 'manages', 'provides', 'patient']
+DOCTOR top tokens: ['doctor', 'patient', 'reviews', 'prescribes', 'results']
+
+Context for 'patient':
+['reports', 'mild', 'rests', 'after', 'follows', 'care', 'doctor', 'examines', 'hospital', 'manages']
+
+Context for 'hospital':
+['admits', 'new', 'provides', 'emergency', 'manages', 'patient']
+
+Context for 'doctor':
+['examines', 'patient', 'prescribes', 'medication', 'reviews', 'results']
+Top bigrams:
+shape: (10, 2)
+┌────────────────────┬─────┐
+│ bigram             ┆ len │
+│ ---                ┆ --- │
+│ str                ┆ u32 │
+╞════════════════════╪═════╡
+│ hospital provides  ┆ 1   │
+│ reviews results    ┆ 1   │
+│ hospital admits    ┆ 1   │
+│ provides emergency ┆ 1   │
+│ after treatment    ┆ 1   │
+│ admits new         ┆ 1   │
+│ doctor examines    ┆ 1   │
+│ emergency care     ┆ 1   │
+│ patient rests      ┆ 1   │
+│ reports mild       ┆ 1   │
+└────────────────────┴─────┘
 ```
 
 ## Text Categorization Analysis
